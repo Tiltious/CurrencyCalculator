@@ -9,6 +9,6 @@ export class AuthenticationService {
   public isLoggedIn(){
     console.log(!!localStorage.getItem('token'),"authserv");
     return !!localStorage.getItem('token');
-  }  
+  }
 }
  
