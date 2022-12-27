@@ -26,20 +26,29 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   onLogin(){
-      if (this.loginform.valid) {
-      this.userv.getUsers().subscribe(
+    if (this.loginform.valid) {
+      const logname = this.loginform.value.logusername;
+      const password = this.loginform.value.logpassword
+      this.userv.getUsersApi().subscribe(
         (users:any)=>{
-          for(let token in users){          
-            if (users[token].username==this.loginform.value.logusername&&users[token].password==this.loginform.value.logpassword) {
+          for(let user of users){          
+            if (user.username==logname&&user.password==password) {
               //asq1a112!A22
-              localStorage.setItem('token',token);
-              console.log(localStorage.getItem('token'));
+              localStorage.setItem('token',user._id);
               this.router.navigate(['dashboard']);
-            }            
+            }else{
+              console.log(localStorage.getItem('token'))
+            }
+          }
+          if(localStorage.getItem('token')==null){
+            alert('Wrong username or/and password. Please try again')
           }
           this.loginform.reset();
         }
       )
+    }else{
+      alert('Invalid username or/and password. Please try again')
+      this.loginform.reset();
     }
     
     //console.log(localStorage.getItem('token'),'this.loginform.value.logusername');

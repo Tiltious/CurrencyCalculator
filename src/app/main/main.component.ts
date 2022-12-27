@@ -28,11 +28,11 @@ export class MainComponent implements OnInit {
     );
   }
   getUsers(){
-    this.userservice.getUsers().subscribe(
+    this.userservice.getUsersApi().subscribe(
       (usersobs:any)=>{
         this.users.splice(0);
-        for (const index in usersobs) {
-        let user = new User(index,usersobs[index].username,usersobs[index].email,usersobs[index].password);
+        for (const element of usersobs) {
+        let user = new User(element._id,element.username,element.email,element.password);
         //this.users.push(user);
         this.users.push(user);
         }});

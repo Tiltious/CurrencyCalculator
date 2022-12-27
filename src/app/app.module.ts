@@ -15,6 +15,8 @@ import { AuthenticationGuard } from './main/shared/authentication.guard';
 import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
 import { NavMenuComponent } from './dashboard/nav-menu/nav-menu.component';
+import { CalculatorComponent } from './dashboard/calculator/calculator.component';
+import { CurrencyService } from './currency.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { NavMenuComponent } from './dashboard/nav-menu/nav-menu.component';
     LoginComponent,
     CreateAccountComponent,
     DashboardComponent,
-    NavMenuComponent
+    NavMenuComponent,
+    CalculatorComponent
   ],
   imports: [
     HttpClientModule,
@@ -31,7 +34,7 @@ import { NavMenuComponent } from './dashboard/nav-menu/nav-menu.component';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [UserServiceService,AuthenticationService,AuthenticationGuard],
+  providers: [UserServiceService,AuthenticationService,AuthenticationGuard,CurrencyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { FormBuilder } from '@angular/forms';
 import { User } from 'src/app/user';
 import { UserServiceService } from 'src/app/user-service.service';
 import { ValidatorFunctionService } from '../shared/validator-function.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-account',
   templateUrl: './create-account.component.html',
@@ -14,7 +15,7 @@ export class CreateAccountComponent implements OnInit {
   hidden:boolean = true;
   ai:number =0;
   @Output() posted: EventEmitter<any> =  new EventEmitter();
-  constructor(private formBuilder:FormBuilder,private userv:UserServiceService,private validator:ValidatorFunctionService) {
+  constructor(private formBuilder:FormBuilder,private userv:UserServiceService,private validator:ValidatorFunctionService,private  router:Router) {
     this.userform = this.formBuilder.group({
       username:['',[Validators.required, Validators.minLength(6), Validators.maxLength(15), this.validator.uniqueUsername()]],
       email:['',[Validators.required, Validators.email, this.validator.uniqueEmail()]],
@@ -37,6 +38,7 @@ export class CreateAccountComponent implements OnInit {
     );
     console.log('cac');
     this.userform.reset();
+    this.router.navigate(['main']).then(()=>{alert("You have succesfully signed!")});
   }
   
   ngOnInit(): void {}
