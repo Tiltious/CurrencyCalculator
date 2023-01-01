@@ -1,8 +1,44 @@
 <h1>For Admin</h1>
+<form action="" [formGroup]="curEditForm" (ngSubmit)="onSubmitEdit()">
+    <div class="form-group container">
+        <div class="form-control mb-2">
+            <label for="currencies">Select currency</label>
+            <select name="currencies" id="currencies" class="form-control" formControlName="currencies">
+                <option *ngFor="let curr of currs;index as index" value="{{index}}">{{curr.name}}</option>
+            </select>
+            <div class="row pb-1">
+                <div class="col">
+                    <label for="currate">Current cost in US Dollars (Current rate)</label><br>
+                    <input type="number" name="currate" id="currate" value="{{currs[currencies.value]?.rate}}" placeholder="Choose a currency and its cost in USD will appear" class="form-control" disabled>
+                </div>    
+                <div class="col ">
+                    <label for="currate">Current value in US Dollars (Inverse Rate)</label><br>
+                    <input type="number" name="currate" id="currate" value="{{currs[currencies.value]?.inverseRate}}" placeholder="Choose a currency and its rate to USD will appear" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="form-control mb-2">
+            <div class="row pb-1">
+                <div class="col">
+                    <label for="rate">New cost in US Dollars (New rate)</label><br>
+                    <input type="number" value="{{currs[currencies.value]?.inverseRate}}" name="rate" id="currate" placeholder="Insert value to update currency rate" class="form-control" formControlName="rate" min="0">
+                </div>    
+                <div class="col">
+                    <label for="currate">Current value in US Dollars (Inverse Rate)</label><br>
+                    <input type="number" name="currate" id="currate" value="{{calcInvRate()}}" placeholder="Choose a currency and its rate to USD will appear" class="form-control" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="btn-group form-control">
+            <button class="btn btn-success">Submit</button>  
+            <button class="btn btn-secondary">Cancel</button>  
+        </div>
+    </div> 
+</form>
 <div *ngFor="let curr of currs">
     <div class="btn-group mx-2">
         <button type="button" class="btn btn-dark btn-sm py-0 my-1"><i class="fa-solid fa-gear 2x"></i></button>
         <button type="button" class="btn btn-danger btn-sm py-0 my-1"><i class="fa-solid fa-trash"></i></button> 
     </div>
-    {{curr.name}}    
+    {{curr.name}}  
 </div>

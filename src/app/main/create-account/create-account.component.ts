@@ -40,7 +40,7 @@ export class CreateAccountComponent implements OnInit {
       roles:[this.userform.value.roles]
     }
     console.log(this.userform.value)
-    this.userv.postUserApi(reqbody).subscribe((user:any)=>{this.posted.emit(user.name);;console.log(user)});
+    this.userv.postUserApi(reqbody).subscribe((user:any)=>{this.posted.emit(user.name);console.log(user)});
     this.router.navigate(['main']).then(()=>{alert("You have succesfully signed!")});
   }
   ngOnInit(): void {}
