@@ -17,6 +17,7 @@ import { routes } from './app-routing.module';
 import { NavMenuComponent } from './dashboard/nav-menu/nav-menu.component';
 import { CalculatorComponent } from './dashboard/calculator/calculator.component';
 import { CurrencyService } from './currency.service';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CurrencyService } from './currency.service';
     CreateAccountComponent,
     DashboardComponent,
     NavMenuComponent,
-    CalculatorComponent
+    CalculatorComponent,
+    EditComponent
   ],
   imports: [
     HttpClientModule,

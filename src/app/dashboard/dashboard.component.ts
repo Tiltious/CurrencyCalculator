@@ -26,14 +26,12 @@ export class DashboardComponent implements OnInit {
       (usersobs:any)=>{
         this.users.splice(0);
         for (const element of usersobs) {
-        let user = new User(element._id,element.username,element.email,element.password);
-        //this.users.push(user);
-
-          if(element=== localStorage.getItem('token')){this.activeUser=user;console.log(this.activeUser,'ww',localStorage.getItem('token'));}
-
+          let user = new User(element._id,element.username,element.email,element.password);
           this.users.push(user);
-        }});
-        console.log(this.users);
+        }
+      }
+    );
+    console.log(this.users);
   }
   showUserDetails(user:User){
     console.log(user);

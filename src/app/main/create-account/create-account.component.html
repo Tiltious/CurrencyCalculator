@@ -17,8 +17,11 @@
                 <input type="text" class="form-control" name="password" id="password" placeholder="password" formControlName="password">
             </div>
             <div class="form-group">
-                <label for="retpassword">Retype Password</label>
-                <input type="text" class="form-control" name="retpassword" id="retpassword" placeholder="ret password">
+                <label for="roles">Role</label>
+                <select name="roles" id="roles" class="form-control" formControlName="roles">
+                    <option value="user">User</option>select
+                    <option value="admin">Admin</option>
+                </select>
             </div>
             <div class="form-group btn-group col-12 py-2">
                 <button [disabled]="!userform.valid" type="submit" class="btn btn-primary form-control">Submit</button>

@@ -33,7 +33,7 @@ export class CalculatorComponent implements OnInit {
   }
   
   public getCurrencies(){
-    this.curserv.getCurrency().subscribe((res:any)=>{
+    this.curserv.getAllCurrencies().subscribe((res:any)=>{
       for(let cur of res){
         this.currencies.push(new Currency(cur._id,cur.code,cur.name,cur.rate,cur.inverseRate))
       };

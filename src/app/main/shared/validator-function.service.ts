@@ -10,7 +10,7 @@ import { ValidatorService } from './validator.service';
 export class ValidatorFunctionService {
   private users:any=[];
   constructor(private validation:ValidatorService,private userv:UserServiceService,) {
-    this.userv.getUsers().subscribe((users:any)=>{for(let i in users){this.users.push(users[i])}})
+    this.userv.getUsersApi().subscribe((users:any)=>{for(let i in users){this.users.push(users[i])}})
   }
 
   uniqueUsername():ValidatorFn{
