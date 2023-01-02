@@ -7,11 +7,6 @@ import { catchError } from 'rxjs/operators';
 export class UserServiceService {
 
   constructor(private userhttp:HttpClient) {}
-  /*
-  public getUsers(){ 
-    return this.userhttp.get('https://realestate-77564-default-rtdb.europe-west1.firebasedatabase.app/User.json');
-  }
-  */
   public getUsersApi(){ 
     return this.userhttp.get('/api'+'/test/all');
   }
@@ -21,11 +16,6 @@ export class UserServiceService {
   public postUserApi(reqbody:any) {
     return this.userhttp.post('/api'+'/auth/signup',reqbody);
   }
-/*
-  public postUser(user:any) {
-    return this.userhttp.post('https://realestate-77564-default-rtdb.europe-west1.firebasedatabase.app/User.json',user);
-  }
-*/
   public updateUser() {
     return ;
   }  

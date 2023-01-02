@@ -4,36 +4,21 @@ import { UserServiceService } from '../user-service.service';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
+  template: `<div class="container-fluid ">
+                <div class="row">
+                    <app-nav-menu></app-nav-menu>
+                </div>
+                <div class="row">
+                    <h1 class="text-center mt-2">Welcome!</h1>
+                    <app-calculator></app-calculator>
+                </div>
+            </div>`,
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
 
   constructor(private userservice:UserServiceService) {}
 
-  ngOnInit(): void { this.getUsers();}
-
-  onDelete(user_id:any,index:any){
-    this.userservice.deleteUser(user_id,index).subscribe(
-      ()=>{this.users.splice(index,1);}
-    );
-  }
+  ngOnInit(): void {}
   hidden:boolean=false;
-  users:any=[];  
-  activeUser:any={}; 
-  getUsers(){
-    this.userservice.getUsersApi().subscribe(
-      (usersobs:any)=>{
-        this.users.splice(0);
-        for (const element of usersobs) {
-          let user = new User(element._id,element.username,element.email,element.password);
-          this.users.push(user);
-        }
-      }
-    );
-    console.log(this.users);
-  }
-  showUserDetails(user:User){
-    console.log(user);
-  }
 }

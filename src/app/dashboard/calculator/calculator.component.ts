@@ -12,22 +12,22 @@ export class CalculatorComponent implements OnInit {
   currencies:Currency[] = []
   conform:FormGroup;
   constructor(private fromBuilder:FormBuilder,private curserv:CurrencyService) {
-    this.getCurrencies();
     this.conform = this.fromBuilder.group({
-      Currency1:['0'],
+      Currency1:[0], //Index of 'euro' currency for pre-set base value 
       Cur1Amount:[1],
-      Currency2:['0']      
+      Currency2:[6]  //Index of 'us dollar' currency for pre-set converted value
     })
   }
   get Currency1(){return this.conform.get('Currency1');}
   get Cur1Amount(){return this.conform.get('Cur1Amount');}
   get Currency2(){return this.conform.get('Currency2');}
   ngOnInit(): void {
+    this.getCurrencies();
   }
   
-  public convert():number{
-    let c1 = this.currencies[this.Currency1?.value].inverseRate;
-    let c2 = this.currencies[this.Currency2?.value].rate;
+  public convert(c1_invrate:any, c2_invrate:any):number{
+    let c1 = this.currencies[c1_invrate]?.inverseRate;
+    let c2 = this.currencies[c2_invrate]?.rate;
     const num = c1*c2*this.Cur1Amount?.value;
     return Number.parseFloat(num.toPrecision(8));
   }

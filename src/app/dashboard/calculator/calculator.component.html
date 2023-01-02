@@ -1,4 +1,4 @@
-<div class="container-fluid" style="box-shadow: 0px 0px 5px black;border-radius: 5px;">
+<div class="container" style="box-shadow: 0px 0px 5px black;border-radius: 5px;">
     <form action="" [formGroup]="conform">
             <div class="row p-2">
                 <h3 class="text-center bg-dark text-light py-1" style="border-radius: 5px;">Currency Calculator</h3>
@@ -19,13 +19,38 @@
             </div>
             <div class="row  mb-2 pb-3">
                 <div class="form-group col">
-                    <label for="Cur1Amount">{{this.currencies[Currency1?.value].name}} Amount</label>
-                    <input type="number" name="Cur1Amount" class="form-control" placeholder="Insert {{this.currencies[Currency1?.value].name}} currency amount" aria-describedby="helpId" id="Cur1Amount" formControlName="Cur1Amount">
+                    <label for="Cur1Amount">Base Amount</label>
+                    <input type="number" name="Cur1Amount" class="form-control" placeholder="Insert currency amount" aria-describedby="helpId" id="Cur1Amount" formControlName="Cur1Amount" min="0">
                 </div>
                 <div class="form-group col">
-                    <label for="Cur2Amount">{{this.currencies[Currency2?.value].name}} Amount</label>
-                    <input type="number" name="Cur2Amount" class="form-control" aria-describedby="helpId" id="Cur2Amount" value="{{this.convert()}}" disabled>
+                    <label for="Cur2Amount">Converted Amount</label>
+                    <input type="number" name="Cur2Amount" class="form-control" aria-describedby="helpId" id="Cur2Amount" value="{{this.convert(this.Currency1?.value,this.Currency2?.value)}}" disabled>
                 </div>
+            </div>
+            <div class="row p-2">
+                <h3 class="text-center bg-dark text-light py-1" style="border-radius: 5px;">All Currencies</h3>
+            </div>
+            <div class="row mb-2">                
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Currency</th>
+                                <th></th>
+                                <th class="text-center">Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let cur of currencies;index as index;">
+                                <td>{{cur.name}}</td>
+                                <td><i class="fa-solid fa-arrow-right"></i></td>
+                                <td class="text-center">{{this.convert(this.Currency1?.value,index)}}</td>
+                            </tr>
+                        </tbody>
+                        
+                    </table>
+                </div>
+                
             </div>
     </form>
 </div>

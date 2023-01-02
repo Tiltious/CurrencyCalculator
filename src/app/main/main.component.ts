@@ -33,7 +33,6 @@ export class MainComponent implements OnInit {
         this.users.splice(0);
         for (const element of usersobs) {
         let user = new User(element._id,element.username,element.email,element.password);
-        //this.users.push(user);
         this.users.push(user);
         }});
   }

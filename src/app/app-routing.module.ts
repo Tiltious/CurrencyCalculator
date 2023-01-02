@@ -6,12 +6,13 @@ import { LoginComponent } from './main/login/login.component';
 import { MainComponent } from './main/main.component';
 import { AuthenticationGuard } from './main/shared/authentication.guard';
 import { EditComponent } from './edit/edit.component';
+import { AuthorizationGuard } from './main/shared/authorization.guard';
 
 export const routes: Routes = [
   {path:'main',component:MainComponent},
   {path:'newuser',component:CreateAccountComponent},
   {path:'login',component:LoginComponent},
-  {path:'edit',component:EditComponent,canActivate:[AuthenticationGuard]},
+  {path:'edit',component:EditComponent,canActivate:[AuthenticationGuard,AuthorizationGuard]},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthenticationGuard]},
   {path: '', redirectTo: 'main', pathMatch: 'full' }];
 

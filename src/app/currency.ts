@@ -1,10 +1,10 @@
 export class Currency {
-    id:String;
+    _id:String;
     code:String;
     name:String;
     rate:number;
     inverseRate:number;
-    constructor(id:String,code:String,name:String,rate:number,inverseRate:number){
-        this.id=id;this.code = code;this.name = name;this.rate =rate;this.inverseRate=inverseRate;
+    constructor(_id:String,code:String,name:String,rate:number,inverseRate:number){
+        this._id=_id;this.code = code;this.name = name;this.rate =rate;this.inverseRate=inverseRate;
     }  
 }

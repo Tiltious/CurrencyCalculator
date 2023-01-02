@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
       this.userv.loginApi(reqbody).subscribe((user:any)=>{
         console.log(user)
         localStorage.setItem('token',user.accessToken);
+        localStorage.setItem('roles',user.roles);
         this.router.navigate(['dashboard']);
         // An event about the logged user for the dashbord component (welcome header)
       });
