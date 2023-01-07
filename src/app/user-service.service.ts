@@ -10,6 +10,9 @@ export class UserServiceService {
   public getUsersApi(){ 
     return this.userhttp.get('/api'+'/test/all');
   }
+  public getRolesApi(){ 
+    return this.userhttp.get('/api'+'/roles/all');
+  }
   public loginApi(reqbody:any){
     return this.userhttp.post('/api'+'/auth/signin',reqbody);
   }

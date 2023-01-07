@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CurrencyService } from '../currency.service';
 import { Currency } from '../currency';
 import { FormBuilder, Validators } from '@angular/forms';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit',
@@ -11,9 +12,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class EditComponent implements OnInit {
 
   hiddenCur=false;
-
+  back(){
+    this._location.back();
+  }
   curEditForm:any;
-  constructor(private curserv: CurrencyService,private formBuilder:FormBuilder) {
+  constructor(private curserv: CurrencyService,private formBuilder:FormBuilder,private _location:Location) {
     this.curEditForm = this.formBuilder.group({
       _id:[''],code:[''],name:[''],rate:['',Validators.min(0)],inverseRate:['']
     })    
@@ -38,7 +41,6 @@ export class EditComponent implements OnInit {
       };
     })
   }
-
 
   calcInvRate(rate:any){return Number.parseFloat((1/rate).toPrecision(14))}
 

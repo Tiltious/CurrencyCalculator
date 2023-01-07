@@ -1,14 +1,13 @@
  <div class="row bg-dark">
-    <div class="col-1">
-        <button class="btn btn-light px-2 py-1 mt-2"(click)="hidden=!hidden;" style="position: fixed;z-index: 2;"><i class="fa-solid fa-bars"></i></button>            
+    <div class="col">
+        <button class="btn btn-sm btn-dark mt-1"(click)="hidden=!hidden;" style="position: fixed;z-index: 2;"><i class="fa-solid fa-bars"></i></button>            
     </div>       
-    <div class="col mx-2">
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark" [hidden]="hidden">  
-            <div class="nav navbar-nav">
-                <a class="nav-item nav-link" [routerLink]="['../edit']">Edit <i class="fa-solid fa-pen-to-square"></i></a>
-                <a class="nav-item nav-link"[routerLink]="['../newuser']">Newuser <i class="fa-solid fa-square-plus"></i></a>
-                <a class="nav-item nav-link" [routerLink]="['']">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
-            </div>
-        </nav>
+    <div class="col-lg mx-2">
+        <ul class="nav justify-content-end" [hidden]="hidden">
+            <li class="nav-item"><a class="nav-link text-light" [routerLink]="['../dashboard']">Home <i class="fa-solid fa-pen-to-square"></i></a></li>
+            <li class="nav-item"><a class="nav-link text-light" [routerLink]="['../edit']">Edit <i class="fa-solid fa-pen-to-square"></i></a></li>
+            <li class="nav-item"><a class="nav-link text-light"[routerLink]="['../newuser']">Newuser <i class="fa-solid fa-square-plus"></i></a></li>
+            <li class="nav-item"><a class="nav-link text-light" [routerLink]="['']">Logout <i class="fa-solid fa-right-from-bracket"></i></a></li>
+        </ul>
     </div>  
-</div>
+</div>  
