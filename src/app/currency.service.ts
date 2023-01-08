@@ -13,11 +13,10 @@ export class CurrencyService {
   public getAllCurrenciesEdit(){       
     return this.userhttp.get('/api'+'/curr/allCurrEdit',{headers: new HttpHeaders({'x-access-token' :`${localStorage.getItem('token')}`})});
   }
-  public postCurrency(curr:any) {
-    return this.userhttp.post('/api'+'',curr);
+  public postCurrency(body:any) {
+    return this.userhttp.post('/api'+'/curr/addCurr',body,{headers: new HttpHeaders({'x-access-token' :`${localStorage.getItem('token')}`})});
   }
   public updateCurrency(id:String,body:any) {
-    console.log(id,body,'/api'+'/curr/currForEdit/'+id)
     return this.userhttp.put('/api'+'/curr/currForEdit/'+id,body,{headers: new HttpHeaders({'x-access-token' :`${localStorage.getItem('token')}`})});
   }  
   public deleteCurrency(user_id:any,index:any) {

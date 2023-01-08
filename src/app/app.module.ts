@@ -18,6 +18,7 @@ import { NavMenuComponent } from './dashboard/nav-menu/nav-menu.component';
 import { CalculatorComponent } from './dashboard/calculator/calculator.component';
 import { CurrencyService } from './currency.service';
 import { EditComponent } from './edit/edit.component';
+import { AddNewCurrencyComponent } from './edit/add-new-currency/add-new-currency.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditComponent } from './edit/edit.component';
     DashboardComponent,
     NavMenuComponent,
     CalculatorComponent,
-    EditComponent
+    EditComponent,
+    AddNewCurrencyComponent
   ],
   imports: [
     HttpClientModule,

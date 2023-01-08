@@ -7,12 +7,14 @@ import { MainComponent } from './main/main.component';
 import { AuthenticationGuard } from './main/shared/authentication.guard';
 import { EditComponent } from './edit/edit.component';
 import { AuthorizationGuard } from './main/shared/authorization.guard';
+import { AddNewCurrencyComponent } from './edit/add-new-currency/add-new-currency.component';
 
 export const routes: Routes = [
   {path:'main',component:MainComponent},
   {path:'newuser',component:CreateAccountComponent},
   {path:'login',component:LoginComponent},
   {path:'edit',component:EditComponent,canActivate:[AuthenticationGuard,AuthorizationGuard]},
+  {path:'newcurr',component:AddNewCurrencyComponent,canActivate:[AuthenticationGuard,AuthorizationGuard]},
   {path:'dashboard',component:DashboardComponent,canActivate:[AuthenticationGuard]},
   {path: '', redirectTo: 'main', pathMatch: 'full' }];
 

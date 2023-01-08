@@ -22,13 +22,11 @@ export class EditComponent implements OnInit {
     })    
   }
 
-
   public get id(){return this.curEditForm.get('_id')}
   public get code(){return this.curEditForm.get('code')}
   public get name(){return this.curEditForm.get('name')}
   public get rate(){return this.curEditForm.get('rate')}
   public get inverseRate(){return this.curEditForm.get('inverseRate')}
-
 
   ngOnInit(): void {this.getAllCurr();}
 
@@ -43,7 +41,6 @@ export class EditComponent implements OnInit {
   }
 
   calcInvRate(rate:any){return Number.parseFloat((1/rate).toPrecision(14))}
-
   
   setFormValue(curr:any){
     this.selectedCur = curr;
@@ -53,13 +50,14 @@ export class EditComponent implements OnInit {
 
   selectedCur:any;
   onSubmitEdit(){
+    if (!this.curEditForm.value) {console.log(this.curEditForm.value);return;}
     const body = {
       code:this.curEditForm.value.code,
       name:this.curEditForm.value.name,
       rate:this.curEditForm.value.rate,
-      inverseRate:1/this.curEditForm.value.rate
+      inverseRate:Number.parseFloat((1/this.curEditForm.value.rate).toPrecision(14))
     }
-
+    
     this.curserv.updateCurrency(this.selectedCur._id,body).subscribe(
       (res)=>{
         console.log(res);
